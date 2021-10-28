@@ -18,6 +18,7 @@ from django.urls import path , include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path("'api-auth/'", include('rest_framework.urls'))   #login for brwsel api
+    path("api-auth/", include('rest_framework.urls')),   #login for brwsel api
+    path("bit0/" , include("bit0.urls")),
 
 ]
