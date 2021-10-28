@@ -3,6 +3,7 @@ from .models import connection_model
 from .serializer import connection_model_serializer , user_serializer
 from rest_framework.permissions import IsAdminUser
 from django.contrib.auth.models import User
+from .permission import IsSuperUser
 
 class create_connection(CreateAPIView):
     queryset = connection_model.objects.all()
@@ -11,7 +12,7 @@ class create_connection(CreateAPIView):
 class list_connection(ListAPIView):
     queryset = connection_model.objects.all()
     serializer_class = connection_model_serializer
-    permission_classes = (IsAdminUser ,)
+    permission_classes = (IsAdminUser,)
 
 class create_user(CreateAPIView):
     queryset = User.objects.all()
@@ -20,5 +21,9 @@ class create_user(CreateAPIView):
 class list_user(ListAPIView):
     queryset = User.objects.all()
     serializer_class = user_serializer
+    permission_classes = (IsSuperUser,)
+
+
+
 
 
