@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     "bit0",
     "rest_framework",
+    'multiselectfield',
 
 ]
 

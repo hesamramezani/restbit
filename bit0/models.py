@@ -1,5 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
+from multiselectfield import MultiSelectField
+
 
 class connection_model(models.Model):
     name = models.CharField(max_length=100)
@@ -9,4 +11,12 @@ class connection_model(models.Model):
 
     def __str__(self):
         return self.name
+
+
+choise = (("BTC", "BTC"), ("ETH", "ETH"), ("BNB", "BNB"), ("ADA", "ADA"), ("SOL", "SOL"), ("XRP", "XRP"))
+
+
+class crypto_model(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    field = MultiSelectField(choices=choise, max_length=23)
 

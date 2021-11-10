@@ -1,5 +1,6 @@
 from django.urls import path
-from .views import create_connection , list_connection , create_user , list_user
+from .views import create_connection , list_connection , create_user , list_user , select_crypto , crypto_list
+from rest_framework import routers
 
 urlpatterns = [
 
@@ -7,6 +8,8 @@ urlpatterns = [
     path("list_connection/" , list_connection.as_view() , name = "list_connection"),
     path("create_user/" , create_user.as_view() , name = "create_user"),
     path("list_user/" , list_user.as_view() , name = "list_user"),
+    path("select_crypto/" , select_crypto.as_view() , name = "select_crypto"),
+    path("crypto_list/" , crypto_list.as_view() , name = "crypto_list"),
 
 ]
 
