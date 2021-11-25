@@ -2,9 +2,9 @@ from rest_framework.views import APIView
 from rest_framework.generics import CreateAPIView , ListAPIView
 from .models import connection_model , crypto_model
 from .serializer import connection_model_serializer , user_serializer , crypto_serializer
-from rest_framework.permissions import IsAdminUser
+from rest_framework.permissions import IsAdminUser , IsAuthenticated
 from django.contrib.auth.models import User
-from .permission import IsSuperUser
+from .permission import IsSuperUser , IsOwner
 from rest_framework.response import Response
 
 
@@ -26,13 +26,24 @@ class list_user(ListAPIView):
     serializer_class = user_serializer
     permission_classes = (IsSuperUser,)
 
+#
+# class select_crypto(CreateAPIView):
+#     queryset = crypto_model.objects.all()
+#     serializer_class = crypto_serializer
+#     permission_classes = (IsAuthenticated,)
 
-class select_crypto(CreateAPIView):
-    queryset = crypto_model.objects.all()
-    serializer_class = crypto_serializer
-
+#
+# class select_crypto(APIView):
+#     def get(self , request , pk):
+#         pass
 
 class crypto_list(ListAPIView):
     queryset = crypto_model.objects.all()
     serializer_class = crypto_serializer
+
+# class select_crypto(APIView):
+#     def get(self, request, pk):
+#         queryset = crypto_model.objects.get(pk = pk)
+#         serializer = crypto_serializer(queryset)
+#         return Response(serializer.data, status=200)
 
