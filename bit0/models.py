@@ -25,3 +25,13 @@ class mobile_number_model(models.Model):
     rel = models.OneToOneField(crypto_model , on_delete=models.CASCADE , primary_key=True)
     mobile = PhoneNumberField(max_length=11 , null=False, blank=False, unique=True)
 
+class price_model(models.Model):
+
+    user = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True)
+    BTC = models.CharField(max_length=40 , null=True)
+    ETH = models.CharField(max_length=40 , null=True)
+    BNB = models.CharField(max_length=40 , null=True)
+    ADA = models.CharField(max_length=40 , null=True)
+    SOL = models.CharField(max_length=40 , null=True)
+    XRP = models.CharField(max_length=40 , null=True)
+

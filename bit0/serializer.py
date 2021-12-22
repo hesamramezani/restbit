@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import connection_model, choise, crypto_model
+from .models import connection_model, choise, crypto_model , mobile_number_model , price_model
 from django.contrib.auth.models import User
 from rest_framework import fields
 
@@ -22,4 +22,14 @@ class crypto_serializer(serializers.ModelSerializer):
         model = crypto_model
         fields = "__all__"
 
+
+class mobile_number_serializer(serializers.ModelSerializer):
+    class Meta:
+        model = mobile_number_model
+        fields = "__all__"
+
+class price_serializer(serializers.ModelSerializer):
+    class Meta:
+        model = price_model
+        fields = "__all__"
 
