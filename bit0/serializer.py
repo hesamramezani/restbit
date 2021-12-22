@@ -22,3 +22,4 @@ class crypto_serializer(serializers.ModelSerializer):
         model = crypto_model
         fields = "__all__"
 
+

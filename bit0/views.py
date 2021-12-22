@@ -26,24 +26,38 @@ class list_user(ListAPIView):
     serializer_class = user_serializer
     permission_classes = (IsSuperUser,)
 
-#
-# class select_crypto(CreateAPIView):
-#     queryset = crypto_model.objects.all()
-#     serializer_class = crypto_serializer
-#     permission_classes = (IsAuthenticated,)
 
-#
-# class select_crypto(APIView):
-#     def get(self , request , pk):
-#         pass
 
 class crypto_list(ListAPIView):
     queryset = crypto_model.objects.all()
     serializer_class = crypto_serializer
 
-# class select_crypto(APIView):
-#     def get(self, request, pk):
-#         queryset = crypto_model.objects.get(pk = pk)
-#         serializer = crypto_serializer(queryset)
-#         return Response(serializer.data, status=200)
+class crypto(APIView):
+
+    def get (self , request , pk):
+        queryset = crypto_model.objects.get(pk = pk)
+        serializer = crypto_serializer(queryset)
+        return Response(serializer.data)
+
+    def delete (self , request , pk):
+        queryset = crypto_model.objects.get(pk = pk)
+        queryset.delete()
+        return Response(status=201)
+
+    def put(self , request , pk):
+        queryset = crypto_model.objects.get(pk = pk)
+        serializer = crypto_serializer(queryset , request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(status=202)
+        else:
+            return Response(status=404)
+
+    #permission_classes = (IsAuthenticated ,)
+
+class create_crypto(CreateAPIView):
+    queryset = crypto_model.objects.all()
+    serializer_class = crypto_serializer
+    #permission_classes = (IsAuthenticated,)
+
 

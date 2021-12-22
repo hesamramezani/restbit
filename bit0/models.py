@@ -17,7 +17,8 @@ choise = (("BTC", "BTC"), ("ETH", "ETH"), ("BNB", "BNB"), ("ADA", "ADA"), ("SOL"
 
 
 class crypto_model(models.Model):
-    user = models.OneToOneField(User , on_delete=models.CASCADE , null=True)
+    user = models.OneToOneField(User , on_delete=models.CASCADE , primary_key=True)
     field = MultiSelectField(choices=choise, max_length=23)
+
 
 
