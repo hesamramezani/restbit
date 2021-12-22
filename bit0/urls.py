@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import hi ,create_connection , list_connection , create_user , list_user , crypto , crypto_list , create_crypto
+from .views import create_connection , list_connection , create_user , list_user , crypto , crypto_list , create_crypto
 from rest_framework import routers
 from . import views
 

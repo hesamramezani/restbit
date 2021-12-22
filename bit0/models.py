@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from multiselectfield import MultiSelectField
+from phonenumber_field.modelfields import PhoneNumberField
 
 
 class connection_model(models.Model):
@@ -20,5 +21,7 @@ class crypto_model(models.Model):
     user = models.OneToOneField(User , on_delete=models.CASCADE , primary_key=True)
     field = MultiSelectField(choices=choise, max_length=23)
 
-
+class mobile_number_model(models.Model):
+    rel = models.OneToOneField(crypto_model , on_delete=models.CASCADE , primary_key=True)
+    mobile = PhoneNumberField(max_length=11 , null=False, blank=False, unique=True)
 
