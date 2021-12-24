@@ -28,10 +28,10 @@ class mobile_number_model(models.Model):
 class price_model(models.Model):
 
     user = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True)
-    BTC = models.CharField(max_length=40 , null=True)
-    ETH = models.CharField(max_length=40 , null=True)
-    BNB = models.CharField(max_length=40 , null=True)
-    ADA = models.CharField(max_length=40 , null=True)
-    SOL = models.CharField(max_length=40 , null=True)
-    XRP = models.CharField(max_length=40 , null=True)
+    BTC = models.CharField(max_length=40 , null=True , blank=True)
+    ETH = models.CharField(max_length=40 , null=True , blank=True)
+    BNB = models.CharField(max_length=40 , null=True , blank=True)
+    ADA = models.CharField(max_length=40 , null=True , blank=True)
+    SOL = models.CharField(max_length=40 , null=True , blank=True)
+    XRP = models.CharField(max_length=40 , null=True , blank=True)
 

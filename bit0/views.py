@@ -1,7 +1,8 @@
 from rest_framework.views import APIView
-from rest_framework.generics import CreateAPIView , ListAPIView
-from .models import connection_model , crypto_model
-from .serializer import connection_model_serializer , user_serializer , crypto_serializer
+from rest_framework.generics import CreateAPIView , ListAPIView , RetrieveUpdateDestroyAPIView
+from .models import connection_model , crypto_model , mobile_number_model , price_model
+from .serializer import connection_model_serializer , user_serializer , crypto_serializer , \
+    mobile_number_serializer , price_serializer
 from rest_framework.permissions import IsAdminUser , IsAuthenticated
 from django.contrib.auth.models import User
 from .permission import IsSuperUser , IsOwner
@@ -60,4 +61,12 @@ class create_crypto(CreateAPIView):
     serializer_class = crypto_serializer
     #permission_classes = (IsAuthenticated,)
 
+
+class create_number(CreateAPIView):
+    queryset = mobile_number_model.objects.all()
+    serializer_class = mobile_number_serializer
+
+class editdelete_number(RetrieveUpdateDestroyAPIView):
+    queryset = mobile_number_model.objects.all()
+    serializer_class = mobile_number_serializer
 
