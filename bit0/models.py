@@ -22,8 +22,8 @@ class crypto_model(models.Model):
     field = MultiSelectField(choices=choise, max_length=23)
 
 class mobile_number_model(models.Model):
-    rel = models.OneToOneField(crypto_model , on_delete=models.CASCADE , primary_key=True)
-    mobile = PhoneNumberField(max_length=11 , null=False, blank=False, unique=True)
+    rel = models.OneToOneField(User , on_delete=models.CASCADE , primary_key=True)
+    mobile = models.CharField(max_length=11 , null=False, blank=False, unique=True)
 
 class price_model(models.Model):
 
