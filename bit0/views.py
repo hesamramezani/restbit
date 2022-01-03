@@ -156,3 +156,12 @@ class kavenegar(APIView):
         return Response(serializer1.data , status=202)
 
     permission_classes = (IsAuthenticated , IsOwner)
+
+
+class revoke(APIView):             # for delete access from db
+
+    def delete(self , request):
+        request.auth.delete()
+        return Response(status=201)
+
+    permission_classes = (IsAuthenticated,)
