@@ -35,6 +35,7 @@ class list_user(ListAPIView):
 class crypto_list(ListAPIView):
     queryset = crypto_model.objects.all()
     serializer_class = crypto_serializer
+    permission_classes = (IsSuperUser,)
 
 class crypto(APIView):
 
@@ -57,25 +58,28 @@ class crypto(APIView):
         else:
             return Response(status=404)
 
-    #permission_classes = (IsAuthenticated ,)
+    permission_classes = (IsAuthenticated , IsOwner)
 
 class create_crypto(CreateAPIView):
     queryset = crypto_model.objects.all()
     serializer_class = crypto_serializer
-    #permission_classes = (IsAuthenticated,)
+    permission_classes = (IsAuthenticated,)
 
 
 class create_number(CreateAPIView):
     queryset = mobile_number_model.objects.all()
     serializer_class = mobile_number_serializer
+    permission_classes = (IsAuthenticated,)
 
 class editdelete_number(RetrieveUpdateDestroyAPIView):
     queryset = mobile_number_model.objects.all()
     serializer_class = mobile_number_serializer
+    permission_classes = (IsAuthenticated,)
 
 class create_price(CreateAPIView):
     queryset = price_model.objects.all()
     serializer_class = price_serializer
+    permission_classes = (IsAuthenticated,)
 
 class price(APIView):
     def get(self , request , pk):
@@ -98,6 +102,7 @@ class price(APIView):
         queryset.delete()
         return Response(status=201)
 
+    permission_classes = (IsAuthenticated , IsOwner)
 
 class kavenegar(APIView):
 
@@ -150,3 +155,4 @@ class kavenegar(APIView):
 
         return Response(serializer1.data , status=202)
 
+    permission_classes = (IsAuthenticated , IsOwner)
