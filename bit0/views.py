@@ -144,7 +144,7 @@ class kavenegar(APIView):
                     params = {
                         'sender': '10004346',
                         'receptor': str(user_number) ,
-                        'message': 'قیمت ارزی که انتخاب کردی به حد نساب رسید '
+                        'message': 'قیمت ارزی که انتخاب کردی به حد نصاب رسید '
                     }
                     response = api.sms_send(params)
                     print(str(response))
